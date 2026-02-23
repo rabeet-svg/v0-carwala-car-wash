@@ -21,9 +21,9 @@ export const defaultMetadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/logo.jpg",
-    apple: "/logo.jpg",
-    shortcut: "/logo.jpg",
+    icon: "/Website Favicon.png",
+    apple: "/apple-icon.png",
+    shortcut: "/Website Favicon.png",
   },
   openGraph: {
     type: "website",

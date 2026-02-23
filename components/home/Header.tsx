@@ -24,9 +24,9 @@ export function Header() {
   return (
     <div className="fixed top-[25px] left-0 right-0 z-50 flex justify-center px-[10px] md:px-[25px] pointer-events-none">
       <div className="bg-destructive/80 backdrop-blur-md shadow-header w-full max-w-[1345px] h-[65px] flex items-center justify-between px-[15px] md:px-[25px] pointer-events-auto">
-        <div className="flex items-center h-full">
-          <Link href="/" className="relative w-[120px] xs:w-[144px] h-[33px] md:w-[197px] md:h-[45px]">
-            <img alt="Car Wala" className="absolute left-0 top-0 w-full h-full object-contain" src="/logo.jpg" />
+        <div className="flex items-center h-full -ml-[15px] md:-ml-[25px]">
+          <Link href="/" className="relative w-[150px] xs:w-[180px] h-[42px] md:w-[240px] md:h-[55px]">
+            <img alt="Car Wala" className="absolute left-0 top-0 w-full h-full object-contain" src="/Car Wala.png" />
           </Link>
         </div>
 

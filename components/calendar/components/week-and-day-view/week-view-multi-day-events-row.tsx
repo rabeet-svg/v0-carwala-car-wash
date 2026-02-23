@@ -63,11 +63,8 @@ export function WeekViewMultiDayEventsRow({ selectedDate, multiDayEvents }: IPro
       const end = parseISO(event.endDate);
 
       return (
-        // Event starts within the week
         (start >= weekStart && start <= weekEnd) ||
-        // Event ends within the week
         (end >= weekStart && end <= weekEnd) ||
-        // Event spans the entire week
         (start <= weekStart && end >= weekEnd)
       );
     });

@@ -14,14 +14,13 @@ export interface UseCalendarSlotsResult {
   fetchSlots: (date: Date) => Promise<void>;
 }
 
-// Helper function to convert Cal.com v2 slot to our CalcomSlot format
 const convertCalcomSlot = (calcomSlot: {
   start: string;
   attendees?: number;
   bookingUid?: string;
 }): CalcomSlot => {
   return {
-    time: calcomSlot.start, // Cal.com v2 uses 'start', we need 'time'
+    time: calcomSlot.start,
     attendees: calcomSlot.attendees || 0,
     bookingUid: calcomSlot.bookingUid,
   };
@@ -35,7 +34,6 @@ export const useCalendarSlots = (
   const [availableSlots, setAvailableSlots] = useState<CalcomSlot[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Fetch available slots for the entire month
   const fetchMonthSlots = useCallback(
     async (currentDate: Date) => {
       if (!eventTypeId || !enabled) return;
@@ -43,11 +41,9 @@ export const useCalendarSlots = (
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
 
-      // Get first and last day of the month
       const firstDay = new Date(year, month, 1);
       const lastDay = new Date(year, month + 1, 0);
 
-      // Extend to cover the full calendar view (including prev/next month days)
       const startDate = new Date(firstDay);
       startDate.setDate(firstDay.getDate() - ((firstDay.getDay() + 6) % 7));
 
@@ -65,8 +61,6 @@ export const useCalendarSlots = (
         if (response.ok) {
           const data = await response.json();
 
-          // Store all slots by date
-          // Cal.com v2 API returns slots directly: { "2025-06-17": [{ "start": "..." }] }
           if (data && typeof data === "object") {
             setMonthSlots(data);
           }
@@ -82,7 +76,6 @@ export const useCalendarSlots = (
     [eventTypeId, enabled]
   );
 
-  // Fetch available slots for selected date
   const fetchSlots = useCallback(
     async (date: Date) => {
       if (!eventTypeId || !enabled) return;
@@ -91,7 +84,6 @@ export const useCalendarSlots = (
       try {
         const selectedLocalDateStr = getLocalDateString(date);
 
-        // Find all slots that fall on this local date
         const slotsForDate: CalcomSlot[] = [];
 
         Object.entries(monthSlots).forEach(([slotDate, slots]) => {
@@ -106,7 +98,6 @@ export const useCalendarSlots = (
         });
 
         if (slotsForDate.length > 0) {
-          // Sort slots by time
           slotsForDate.sort(
             (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()
           );
@@ -115,8 +106,6 @@ export const useCalendarSlots = (
           return;
         }
 
-        // Fallback: fetch specific date range that covers this local date
-        // We need to account for timezone differences, so fetch a wider range
         const dayBefore = new Date(date);
         dayBefore.setDate(date.getDate() - 1);
         const dayAfter = new Date(date);
@@ -133,9 +122,7 @@ export const useCalendarSlots = (
           const data = await response.json();
 
           const slotsArray: CalcomSlot[] = [];
-          // Cal.com v2 API returns slots directly: { "2025-06-17": [{ "start": "..." }] }
           if (data && typeof data === "object") {
-            // Find slots that fall on our selected local date
             Object.entries(data).forEach(([slotDate, slots]) => {
               if (Array.isArray(slots)) {
                 slots.forEach(
@@ -154,7 +141,6 @@ export const useCalendarSlots = (
             });
           }
 
-          // Sort slots by time
           slotsArray.sort(
             (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()
           );

@@ -48,7 +48,6 @@ export interface CalcomBookingResponse {
     email: string;
     name: string;
   }>;
-  // Keep backward compatibility
   startTime?: string;
   endTime?: string;
 }
@@ -61,7 +60,6 @@ export interface CalcomEventType {
   description?: string;
 }
 
-// New interfaces for reschedule and cancel operations
 export interface RescheduleRequest {
   bookingUid: string;
   start: string;

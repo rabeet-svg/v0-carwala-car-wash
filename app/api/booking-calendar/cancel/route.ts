@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { applyRateLimit } from "@/lib/booking-calendar/utils/rate-limiting";
 
 export async function POST(request: NextRequest) {
-  // Apply rate limiting (disabled in development)
   const rateLimitCheck = await applyRateLimit("cal-cancel");
   if (!rateLimitCheck.allowed) {
     return (
@@ -31,7 +30,6 @@ export async function POST(request: NextRequest) {
   try {
     const cancelData = await request.json();
 
-    // Validate required fields
     if (!cancelData.bookingUid) {
       return NextResponse.json(
         { error: "Missing required field: bookingUid" },
@@ -39,8 +37,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Format the cancel data for Cal.com v2 API
-    // According to docs: bookingUid goes in URL, only cancellationReason in body
     const calcomCancelData = {
       cancellationReason:
         cancelData.cancellationReason || "User requested cancellation",

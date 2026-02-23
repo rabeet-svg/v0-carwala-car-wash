@@ -16,7 +16,6 @@ interface BookingRequestV2 {
 }
 
 export async function POST(request: NextRequest) {
-  // Apply rate limiting (disabled in development)
   const rateLimitCheck = await applyRateLimit("cal-booking");
   if (!rateLimitCheck.allowed) {
     return (
@@ -45,7 +44,6 @@ export async function POST(request: NextRequest) {
   try {
     const bookingData = await request.json();
 
-    // Validate required fields
     if (
       !bookingData.eventTypeId ||
       !bookingData.start ||
@@ -57,7 +55,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate and parse eventTypeId
     const eventTypeId = parseInt(bookingData.eventTypeId);
     if (isNaN(eventTypeId) || eventTypeId <= 0) {
       return NextResponse.json(
@@ -66,12 +63,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Ensure notes is always a string
     const notes = String(
       bookingData.metadata?.notes || "No additional notes provided"
     );
 
-    // Format the booking data for Cal.com v2 API
     const calcomBookingData: BookingRequestV2 = {
       start: bookingData.start,
       attendee: {
@@ -81,7 +76,6 @@ export async function POST(request: NextRequest) {
         language: "en",
       },
       eventTypeId,
-      // ALL form fields must go in bookingFieldsResponses for v2 API
       bookingFieldsResponses: {
         name: bookingData.attendee.name,
         email: bookingData.attendee.email,

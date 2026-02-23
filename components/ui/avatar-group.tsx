@@ -4,8 +4,6 @@ import { cn } from "@/lib/utils";
 
 import type { ElementRef, HTMLAttributes, ReactElement } from "react";
 
-// ================================== //
-
 type TAvatarGroupRef = ElementRef<"div">;
 type TAvatarGroupProps = HTMLAttributes<HTMLDivElement> & { max?: number; spacing?: number };
 
@@ -42,7 +40,5 @@ const AvatarGroup = forwardRef<TAvatarGroupRef, TAvatarGroupProps>(({ className,
 });
 
 AvatarGroup.displayName = "AvatarGroup";
-
-// ================================== //
 
 export { AvatarGroup };

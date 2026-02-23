@@ -5,8 +5,6 @@ import { cn } from "@/lib/utils";
 
 import type { TimeFieldProps, TimeValue } from "react-aria-components";
 
-// ================================== //
-
 type TTimeInputRef = HTMLDivElement;
 type TTimeInputProps = Omit<TimeFieldProps<TimeValue>, "isDisabled" | "isInvalid"> & {
   readonly dateInputClassName?: string;
@@ -54,7 +52,5 @@ const TimeInput = forwardRef<TTimeInputRef, TTimeInputProps>(
 );
 
 TimeInput.displayName = "TimeInput";
-
-// ================================== //
 
 export { TimeInput };

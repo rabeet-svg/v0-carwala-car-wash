@@ -29,8 +29,6 @@ import {
 import type { ICalendarCell, IEvent } from "@/components/calendar/interfaces";
 import type { TCalendarView, TVisibleHours, TWorkingHours } from "@/components/calendar/types";
 
-// ================ Header helper functions ================ //
-
 export function rangeText(view: TCalendarView, date: Date) {
   const formatString = "MMM d, yyyy";
   let start: Date;
@@ -85,8 +83,6 @@ export function getEventsCount(events: IEvent[], date: Date, view: TCalendarView
 
   return events.filter(event => compareFns[view](new Date(event.startDate), date)).length;
 }
-
-// ================ Week and day view helper functions ================ //
 
 export function getCurrentEvents(events: IEvent[]) {
   const now = new Date();
@@ -165,8 +161,6 @@ export function getVisibleHours(visibleHours: TVisibleHours, singleDayEvents: IE
 
   return { hours, earliestEventHour, latestEventHour };
 }
-
-// ================ Month view helper functions ================ //
 
 export function getCalendarCells(selectedDate: Date): ICalendarCell[] {
   const currentYear = selectedDate.getFullYear();

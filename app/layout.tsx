@@ -4,17 +4,10 @@ import { Analytics } from "@vercel/analytics/next"
 import { TRPCProvider } from "@/components/providers"
 import { Toaster } from "sonner"
 import { WhatsAppWidget } from "@/components/WhatsAppWidget"
+import { defaultMetadata } from "@/lib/metadata"
 import "./globals.css"
 
-export const metadata: Metadata = {
-  title: "Carwala - Premium Car Wash & Detailing",
-  description:
-    "Professional car wash and detailing services. Keep your vehicle spotless with Carwala premium car care.",
-  icons: {
-    icon: "/logo.jpg",
-    apple: "/logo.jpg",
-  },
-}
+export const metadata: Metadata = defaultMetadata
 
 export default function RootLayout({
   children,

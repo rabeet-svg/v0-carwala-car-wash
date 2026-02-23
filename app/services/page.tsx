@@ -5,6 +5,15 @@ import { Footer } from "@/components/home/Footer"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
 import Link from "next/link"
+import { generatePageMetadata } from "@/lib/metadata"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = generatePageMetadata({
+  title: "Services",
+  description: "Professional car detailing services - Silver, Gold, Platinum, and Deep Detailing packages. Mobile service available in Karachi.",
+  image: "/media/680-services-006.webp",
+  url: "/services",
+})
 
 const services = [
   {

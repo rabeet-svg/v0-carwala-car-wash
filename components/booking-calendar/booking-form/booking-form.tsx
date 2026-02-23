@@ -22,8 +22,8 @@ import Link from "next/link";
 interface BookingFormProps {
   selectedSlot: string;
   eventTypeId: string;
-  eventLength: number; // in minutes
-  userTimezone: string; // User's selected timezone
+  eventLength: number;
+  userTimezone: string;
   onSuccess: (booking: CalcomBookingResponse) => void;
   onBack: () => void;
 }
@@ -107,7 +107,6 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
   return (
     <div className="bg-neutral-900 overflow-hidden rounded-2xl border border-neutral-800 shadow p-4 sm:p-6">
-      {/* Appointment Details */}
       <div className="mb-6 sm:mb-8">
         <AppointmentDetails
           selectedSlot={selectedSlot}
@@ -116,19 +115,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         />
       </div>
 
-      {/* Booking Form */}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-          {/* Contact Information */}
           <ContactSection control={form.control} />
 
-          {/* Referral Source */}
           <ReferralSection watch={form.watch} setValue={form.setValue} />
 
-          {/* Guests */}
           <GuestsSection guests={guests} onGuestsChange={setGuests} />
 
-          {/* Error Display */}
           {form.formState.errors.root && (
             <Alert className="border-red-500/20 bg-red-500/10">
               <AlertDescription className="text-red-400">
@@ -137,7 +131,6 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             </Alert>
           )}
 
-          {/* Form Actions */}
           <div className="flex gap-3">
             <Button
               variant="outline"
@@ -155,7 +148,6 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             </Button>
           </div>
 
-          {/* Privacy Policy Text */}
           <p className="text-center text-sm text-neutral-400">
             By sending, you agree to our{" "}
             <Link

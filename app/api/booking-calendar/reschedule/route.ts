@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { applyRateLimit } from "@/lib/booking-calendar/utils/rate-limiting";
 
 export async function POST(request: NextRequest) {
-  // Apply rate limiting (disabled in development)
   const rateLimitCheck = await applyRateLimit("cal-reschedule");
   if (!rateLimitCheck.allowed) {
     return (
@@ -31,7 +30,6 @@ export async function POST(request: NextRequest) {
   try {
     const rescheduleData = await request.json();
 
-    // Validate required fields
     if (!rescheduleData.bookingUid || !rescheduleData.start) {
       return NextResponse.json(
         { error: "Missing required fields: bookingUid and start time" },
@@ -39,8 +37,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Format the reschedule data for Cal.com v2 API
-    // According to docs: bookingUid goes in URL, not body
     const calcomRescheduleData = {
       start: rescheduleData.start,
       rescheduledBy: rescheduleData.rescheduledBy || "User",

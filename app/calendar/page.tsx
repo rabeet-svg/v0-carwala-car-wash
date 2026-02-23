@@ -2,9 +2,9 @@ import { Header } from "@/components/home/Header"
 import { Footer } from "@/components/home/Footer"
 import BookingWidget from "@/components/booking-calendar/booking-widget";
 import type { ServiceOption } from "@/components/booking-calendar/booking-widget";
+import { generatePageMetadata } from "@/lib/metadata"
+import type { Metadata } from "next"
 
-// Service packages matching the main site offerings.
-// Each maps to its own Cal.com Event Type for availability & booking.
 const SERVICES: ServiceOption[] = [
   {
     id: "silver",
@@ -35,6 +35,13 @@ const SERVICES: ServiceOption[] = [
     description: "Complete perfection — paint correction, ceramic coating & full detail",
   },
 ];
+
+export const metadata: Metadata = generatePageMetadata({
+  title: "Book Appointment",
+  description: "Schedule your professional car detailing appointment online. Choose from Silver, Gold, Platinum, or Detailed packages.",
+  image: "/premium-car-detailing-polishing-and-protection.jpg",
+  url: "/calendar",
+})
 
 export default async function CalendarPage({
   searchParams,

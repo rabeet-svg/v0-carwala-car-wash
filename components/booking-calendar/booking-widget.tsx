@@ -21,17 +21,15 @@ export interface ServiceOption {
   id: string;
   name: string;
   eventTypeId: string;
-  duration?: number; // in minutes
+  duration?: number;
   description?: string;
 }
 
 interface BookingWidgetProps {
-  /** Single event type ID (for single-service mode) */
   eventTypeId?: string;
-  /** Multiple services with their own event type IDs */
   services?: ServiceOption[];
   initialServiceId?: string;
-  eventLength?: number; // in minutes, default 30
+  eventLength?: number;
   title?: string;
   description?: string;
   showHeader?: boolean;
@@ -67,21 +65,17 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
   const [isConfirmingReschedule, setIsConfirmingReschedule] = useState(false);
   const [isCancellingMeeting, setIsCancellingMeeting] = useState(false);
 
-  // Resolve the active event type ID
   const activeEventTypeId = selectedService?.eventTypeId || eventTypeId || '';
   const activeEventLength = selectedService?.duration || eventLength;
 
-  // Ref for scroll positioning
   const widgetRef = useRef<HTMLDivElement>(null);
   const hasUserInteracted = useRef(false);
 
-  // Initialize user timezone on component mount
   useEffect(() => {
     const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     setUserTimezone(browserTimezone);
   }, []);
 
-  // Auto-scroll to widget when step changes due to user interaction
   useEffect(() => {
     if (hasUserInteracted.current && widgetRef.current) {
       setTimeout(() => {
@@ -100,7 +94,6 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
     }
   }, [currentStep]);
 
-  // Auto-reset cancelled state after countdown
   useEffect(() => {
     if (currentStep === 'cancelled') {
       const interval = setInterval(() => {

@@ -5,8 +5,16 @@ import { Stats } from "@/components/home/Stats"
 import { Services } from "@/components/home/Services"
 import { CallToAction } from "@/components/home/CallToAction"
 import { Footer } from "@/components/home/Footer"
+import { generatePageMetadata } from "@/lib/metadata"
+import type { Metadata } from "next"
 
 export const dynamic = 'force-static'
+
+export const metadata: Metadata = generatePageMetadata({
+  title: "Home",
+  description: "Professional car wash and detailing services in Karachi. Premium car care with mobile service available.",
+  image: "/premium-car-detailing-polishing-and-protection.jpg",
+})
 
 export default function Home() {
   return (

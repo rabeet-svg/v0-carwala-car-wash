@@ -15,7 +15,7 @@ import type { CalcomBookingResponse } from "@/types/booking";
 
 interface BookingSuccessProps {
   booking: CalcomBookingResponse;
-  userTimezone: string; // User's selected timezone
+  userTimezone: string;
   onReschedule: () => void;
   onCancel: () => void;
   onNewBooking: () => void;
@@ -30,11 +30,9 @@ export const BookingSuccess: React.FC<BookingSuccessProps> = ({
   onNewBooking,
   isRescheduled,
 }) => {
-  // Format the booking details in user's selected timezone
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
 
-    // Validate the date
     if (isNaN(date.getTime())) {
       console.error("Invalid date string:", dateString);
       return {
@@ -43,7 +41,6 @@ export const BookingSuccess: React.FC<BookingSuccessProps> = ({
       };
     }
 
-    // Use user's selected timezone for consistent formatting
     const dateStr = date.toLocaleDateString(undefined, {
       weekday: "long",
       year: "numeric",
@@ -63,12 +60,10 @@ export const BookingSuccess: React.FC<BookingSuccessProps> = ({
   const { dateStr, timeStr } = formatDateTime(booking.start);
   const attendee = booking.attendees?.[0];
 
-  // Generate calendar links
   const generateCalendarLinks = () => {
     const startDate = new Date(booking.start);
     const endDate = new Date(booking.end);
 
-    // Validate dates before formatting
     if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
       console.error("Invalid date values:", {
         start: booking.start,
@@ -89,7 +84,6 @@ export const BookingSuccess: React.FC<BookingSuccessProps> = ({
     const startFormatted = formatDateForCalendar(startDate);
     const endFormatted = formatDateForCalendar(endDate);
 
-    // Create VCALENDAR content for Apple Calendar
     const vcalendarContent = `BEGIN:VCALENDAR
       VERSION:2.0
       BEGIN:VEVENT

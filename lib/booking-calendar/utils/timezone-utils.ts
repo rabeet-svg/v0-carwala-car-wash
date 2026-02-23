@@ -4,13 +4,10 @@ interface TimezoneOption {
   region: string;
 }
 
-// Track if we've already warned about manual offset calculation
 let hasLoggedManualOffsetWarning = false;
 
-// Helper function to manually calculate timezone offset string
 const calculateOffsetManually = (timezone: string, date: Date): string => {
   try {
-    // Log warning only once for QA visibility
     if (!hasLoggedManualOffsetWarning) {
       console.warn(
         'Timezone offset calculation: Falling back to manual calculation due to limited Intl.DateTimeFormat support'
@@ -18,19 +15,16 @@ const calculateOffsetManually = (timezone: string, date: Date): string => {
       hasLoggedManualOffsetWarning = true;
     }
 
-    // Calculate offset in minutes
     const utc = date.getTime() + date.getTimezoneOffset() * 60000;
     const targetTime = new Date(
       date.toLocaleString('en-US', { timeZone: timezone })
     );
     const offsetMinutes = (utc - targetTime.getTime()) / 60000;
 
-    // Convert to hours and minutes
     const hours = Math.floor(Math.abs(offsetMinutes) / 60);
     const minutes = Math.abs(offsetMinutes) % 60;
     const sign = offsetMinutes <= 0 ? '+' : '-';
 
-    // Format as GMT±HH:MM
     return `GMT${sign}${hours.toString().padStart(2, '0')}:${minutes
       .toString()
       .padStart(2, '0')}`;
@@ -39,9 +33,7 @@ const calculateOffsetManually = (timezone: string, date: Date): string => {
   }
 };
 
-// Helper function to get timezone offset string
 export const getTimezoneOffset = (timezone: string, date = new Date()) => {
-  // Try shortOffset first (better browser compatibility)
   try {
     const formatter = new Intl.DateTimeFormat('en', {
       timeZone: timezone,
@@ -54,10 +46,8 @@ export const getTimezoneOffset = (timezone: string, date = new Date()) => {
       return offsetPart.value;
     }
   } catch {
-    // shortOffset failed, continue to longOffset
   }
 
-  // Try longOffset as fallback
   try {
     const formatter = new Intl.DateTimeFormat('en', {
       timeZone: timezone,
@@ -70,16 +60,12 @@ export const getTimezoneOffset = (timezone: string, date = new Date()) => {
       return offsetPart.value;
     }
   } catch {
-    // longOffset failed, continue to manual calculation
   }
 
-  // Both Intl methods failed, calculate manually
   return calculateOffsetManually(timezone, date);
 };
 
-// Helper function to get region from timezone name
 export const getRegionFromTimezone = (timezone: string): string => {
-  // Handle UTC specifically
   if (timezone === 'UTC') return 'UTC';
 
   const parts = timezone.split('/');
@@ -101,7 +87,6 @@ export const getRegionFromTimezone = (timezone: string): string => {
   return regionMap[continent] || 'Other';
 };
 
-// Helper function to get timezone offset in minutes for sorting
 const getTimezoneOffsetMinutes = (timezone: string): number => {
   try {
     const date = new Date();
@@ -116,7 +101,6 @@ const getTimezoneOffsetMinutes = (timezone: string): number => {
   }
 };
 
-// Helper function to get display name for timezone
 export const getTimezoneDisplayName = (timezone: string): string => {
   try {
     const city = timezone.split('/').pop()?.replace(/_/g, ' ') || timezone;
@@ -127,32 +111,25 @@ export const getTimezoneDisplayName = (timezone: string): string => {
   }
 };
 
-// Helper function to sort timezones with precomputed offsets
 const sortTimezones = (timezones: TimezoneOption[]): TimezoneOption[] => {
-  // Precompute all offsets once
   const timezonesWithOffsets = timezones.map((tz) => ({
     ...tz,
     offsetMinutes: getTimezoneOffsetMinutes(tz.value),
   }));
 
-  // Sort using precomputed offsets
   return timezonesWithOffsets
     .sort((a, b) => {
-      // Sort by UTC offset first, then by city name
       if (a.offsetMinutes !== b.offsetMinutes) {
         return a.offsetMinutes - b.offsetMinutes;
       }
 
-      // If same offset, sort alphabetically by city
       return a.label.localeCompare(b.label);
     })
-    .map(({ offsetMinutes, ...tz }) => tz); // Remove the temporary offsetMinutes property
+    .map(({ offsetMinutes, ...tz }) => tz);
 };
 
-// Get available timezones dynamically
 export const getAvailableTimezones = (): TimezoneOption[] => {
   try {
-    // Try modern API first
     if (
       'supportedValuesOf' in Intl &&
       typeof Intl.supportedValuesOf === 'function'
@@ -160,7 +137,6 @@ export const getAvailableTimezones = (): TimezoneOption[] => {
       const timezones = Intl.supportedValuesOf('timeZone');
       const filteredTimezones = timezones
         .filter((tz) => {
-          // Filter out some less common or deprecated timezones
           return (
             !tz.includes('SystemV') &&
             !tz.includes('Etc/GMT') &&
@@ -181,7 +157,6 @@ export const getAvailableTimezones = (): TimezoneOption[] => {
     console.warn('Failed to get supported timezones:', error);
   }
 
-  // Fallback to common timezones if API not available
   const commonTimezones = [
     'America/New_York',
     'America/Chicago',

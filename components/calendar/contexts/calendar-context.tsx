@@ -44,10 +44,6 @@ export function CalendarProvider({ children, users, events }: { children: React.
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedUserId, setSelectedUserId] = useState<IUser["id"] | "all">("all");
 
-  // This localEvents doesn't need to exists in a real scenario.
-  // It's used here just to simulate the update of the events.
-  // In a real scenario, the events would be updated in the backend
-  // and the request that fetches the events should be refetched
   const [localEvents, setLocalEvents] = useState<IEvent[]>(events);
 
   const handleSelectDate = (date: Date | undefined) => {
@@ -69,7 +65,6 @@ export function CalendarProvider({ children, users, events }: { children: React.
         setVisibleHours,
         workingHours,
         setWorkingHours,
-        // If you go to the refetch approach, you can remove the localEvents and pass the events directly
         events: localEvents,
         setLocalEvents,
       }}

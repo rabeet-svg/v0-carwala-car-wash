@@ -34,14 +34,12 @@ export const CalendarGrid: React.FC<CalendarGridProps> = ({
 
   return (
     <div className="flex-1 p-3 sm:p-6">
-      {/* Month Navigation */}
       <CalendarNavigation
         currentDate={currentDate}
         onPreviousMonth={onPreviousMonth}
         onNextMonth={onNextMonth}
       />
 
-      {/* Day Headers */}
       <div className="mb-3 grid grid-cols-7 gap-1">
         {DAYS.map((day) => (
           <div
@@ -52,7 +50,6 @@ export const CalendarGrid: React.FC<CalendarGridProps> = ({
         ))}
       </div>
 
-      {/* Calendar Grid */}
       <div className="grid grid-cols-7 gap-1">
         {calendarDays.map((day) => (
           <CalendarDayButton

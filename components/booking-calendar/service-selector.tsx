@@ -25,7 +25,6 @@ export function ServiceSelector({
 }: ServiceSelectorProps) {
     return (
         <div className="bg-neutral-900 rounded-2xl border border-neutral-700 shadow-xl overflow-hidden">
-            {/* Header */}
             <div className="p-6 border-b border-neutral-700">
                 <h2 className="text-xl font-bold text-neutral-100">{title}</h2>
                 {description && (
@@ -33,7 +32,6 @@ export function ServiceSelector({
                 )}
             </div>
 
-            {/* Service Cards */}
             <div className="p-4 grid gap-3 sm:grid-cols-2">
                 {services.map((service) => (
                     <button

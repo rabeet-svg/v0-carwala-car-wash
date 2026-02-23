@@ -11,7 +11,7 @@ export const useIntersectionObserver = (
 ) => {
   const {
     threshold = 0.1,
-    rootMargin = '500px', // Fetch data 500px before calendar becomes visible
+    rootMargin = '500px',
     triggerOnce = true,
   } = options;
 

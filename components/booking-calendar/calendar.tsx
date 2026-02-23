@@ -15,7 +15,6 @@ interface CalendarProps {
   showHeader?: boolean;
   userTimezone: string;
   onTimezoneChange: (timezone: string) => void;
-  /** Optional services list — shows inline tabs to switch event types */
   services?: ServiceOption[];
   onServiceChange?: (service: ServiceOption) => void;
   initialServiceId?: string;
@@ -40,11 +39,9 @@ export const Calendar: React.FC<CalendarProps> = ({
     initialServiceId || services?.[0]?.id || ""
   );
 
-  // Resolve which event type ID to use
   const activeEventTypeId =
     services?.find((s) => s.id === activeServiceId)?.eventTypeId || eventTypeId;
 
-  // Intersection observer to detect when calendar becomes visible
   const [calendarRef, isIntersecting, hasIntersected] = useIntersectionObserver(
     {
       rootMargin: "500px",
@@ -52,13 +49,10 @@ export const Calendar: React.FC<CalendarProps> = ({
     }
   );
 
-  // Use custom hook for slots data - only enabled when visible
   const { monthSlots, availableSlots, loading, fetchMonthSlots, fetchSlots } =
     useCalendarSlots(activeEventTypeId, hasIntersected);
 
-  // Auto-select today's date (regardless of availability)
   const autoSelectToday = () => {
-    // Only auto-select if no date is currently selected
     if (!selectedDate) {
       const today = new Date();
       setSelectedDate(today);
@@ -66,20 +60,17 @@ export const Calendar: React.FC<CalendarProps> = ({
     }
   };
 
-  // Handle date selection
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date);
     fetchSlots(date);
   };
 
-  // Handle service tab change
   const handleServiceChange = (service: ServiceOption) => {
     setActiveServiceId(service.id);
-    setSelectedDate(null); // Reset date selection on service change
+    setSelectedDate(null);
     onServiceChange?.(service);
   };
 
-  // Navigation
   const goToPreviousMonth = () => {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() - 1)
@@ -92,7 +83,6 @@ export const Calendar: React.FC<CalendarProps> = ({
     );
   };
 
-  // Fetch month slots when calendar becomes visible or month/service changes
   useEffect(() => {
     if (hasIntersected) {
       fetchMonthSlots(currentDate);
@@ -105,19 +95,15 @@ export const Calendar: React.FC<CalendarProps> = ({
     fetchMonthSlots,
   ]);
 
-  // Auto-select today's date when month slots are loaded
   useEffect(() => {
     if (Object.keys(monthSlots).length > 0) {
       autoSelectToday();
     }
   }, [monthSlots]);
 
-  // Refresh data when timezone changes
   useEffect(() => {
     if (userTimezone) {
-      // Fetch fresh data for the current month
       fetchMonthSlots(currentDate);
-      // If there's a selected date, refetch slots for that date in the new timezone
       if (selectedDate) {
         fetchSlots(selectedDate);
       }
@@ -129,7 +115,6 @@ export const Calendar: React.FC<CalendarProps> = ({
       ref={calendarRef}
       className="overflow-hidden rounded-2xl border border-border bg-card shadow"
     >
-      {/* Header with optional service tabs */}
       {(showHeader || (services && services.length > 0)) && (
         <div className="border-b border-border p-4 sm:p-6">
           {showHeader && (
@@ -143,7 +128,6 @@ export const Calendar: React.FC<CalendarProps> = ({
             </div>
           )}
 
-          {/* Inline service tabs */}
           {services && services.length > 0 && (
             <div className={`flex flex-wrap gap-1.5 justify-center sm:gap-2 ${showHeader ? "mt-3 sm:mt-4" : ""}`}>
               {services.map((service) => {
@@ -179,9 +163,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         </div>
       )}
 
-      {/* Calendar and Time Slots */}
       <div className="flex flex-col lg:flex-row">
-        {/* Calendar Grid */}
         <CalendarGrid
           currentDate={currentDate}
           selectedDate={selectedDate}
@@ -191,7 +173,6 @@ export const Calendar: React.FC<CalendarProps> = ({
           onNextMonth={goToNextMonth}
         />
 
-        {/* Time Slots Panel */}
         <TimeSlotsPanel
           selectedDate={selectedDate}
           availableSlots={availableSlots}

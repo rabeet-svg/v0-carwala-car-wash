@@ -14,7 +14,6 @@ export const MONTHS = [
   'December',
 ];
 
-// Helper function to get date string in local timezone
 export const getLocalDateString = (date: Date) => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -22,14 +21,11 @@ export const getLocalDateString = (date: Date) => {
   return `${year}-${month}-${day}`;
 };
 
-// Helper function to convert UTC slot time to local date
 export const getSlotLocalDate = (utcTimeString: string) => {
   const utcDate = new Date(utcTimeString);
-  // Get the local date for this UTC time
   return getLocalDateString(utcDate);
 };
 
-// Format time based on preference and user's timezone
 export const formatTime = (
   timeString: string,
   timeFormat: '12h' | '24h',
@@ -37,7 +33,6 @@ export const formatTime = (
 ) => {
   const date = new Date(timeString);
 
-  // Ensure we're displaying in user's selected timezone
   if (timeFormat === '24h') {
     return date.toLocaleTimeString([], {
       hour: '2-digit',
@@ -80,11 +75,9 @@ export const generateCalendarDays = (
   const firstDay = new Date(year, month, 1);
   const startDate = new Date(firstDay);
 
-  // Adjust to Monday start (getDay() returns 0 for Sunday)
   const dayOffset = (firstDay.getDay() + 6) % 7;
   startDate.setDate(firstDay.getDate() - dayOffset);
 
-  // Preprocess monthSlots to create a Set of all slot local dates for O(1) lookup
   const availableSlotDates = new Set<string>();
   Object.values(monthSlots).forEach((slots) => {
     if (slots && slots.length > 0) {
@@ -109,7 +102,6 @@ export const generateCalendarDays = (
     const isSelected =
       !!selectedDate && date.getTime() === selectedDate.getTime();
 
-    // Check if this date has available slots using O(1) Set lookup
     const dateStr = getLocalDateString(date);
     const hasSlots = availableSlotDates.has(dateStr);
 

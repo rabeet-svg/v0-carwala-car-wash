@@ -26,19 +26,16 @@ export const TimezoneSelector: React.FC<TimezoneSelectorProps> = ({
     (tz) => tz.value === selectedTimezone
   );
 
-  // Handle wheel events to prevent boundary jumping
   const handleWheel = (e: React.WheelEvent) => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    // Allow default scrolling behavior
     e.stopPropagation();
 
     const { scrollTop, scrollHeight, clientHeight } = container;
     const isAtTop = scrollTop === 0;
     const isAtBottom = scrollTop + clientHeight >= scrollHeight;
 
-    // Prevent event bubbling when at boundaries to avoid auto-jumping
     if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
       e.preventDefault();
     }

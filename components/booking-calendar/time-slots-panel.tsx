@@ -26,7 +26,6 @@ export const TimeSlotsPanel: React.FC<TimeSlotsPanelProps> = ({
   onTimezoneChange,
   onSlotSelect,
 }) => {
-  // Format selected date for clear display
   const formatSelectedDate = (date: Date | null) => {
     if (!date) return "Select a date";
 
@@ -34,7 +33,6 @@ export const TimeSlotsPanel: React.FC<TimeSlotsPanelProps> = ({
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
 
-    // Check if it's today or tomorrow for friendly labels
     if (date.toDateString() === today.toDateString()) {
       return `Today, ${date.toLocaleDateString("en-US", {
         month: "short",
@@ -49,7 +47,6 @@ export const TimeSlotsPanel: React.FC<TimeSlotsPanelProps> = ({
       })}`;
     }
 
-    // For other dates, show: "Fri, Jun 27" (includes day, month, date)
     return date.toLocaleDateString("en-US", {
       weekday: "short",
       month: "short",
@@ -60,7 +57,6 @@ export const TimeSlotsPanel: React.FC<TimeSlotsPanelProps> = ({
   return (
     <div className="w-full border-t border-border lg:w-72 lg:border-t-0 lg:border-l">
       <div className="p-4 sm:p-6">
-        {/* Timezone Selector */}
         {userTimezone && (
           <TimezoneSelector
             selectedTimezone={userTimezone}
@@ -93,9 +89,7 @@ export const TimeSlotsPanel: React.FC<TimeSlotsPanelProps> = ({
         </div>
       </div>
 
-      {/* Time Slots */}
       <div className="relative">
-        {/* Scroll container with visible scrollbar and height limit */}
         <div className="scrollbar-thin scrollbar-track-muted scrollbar-thumb-border hover:scrollbar-thumb-muted-foreground max-h-64 overflow-y-auto px-4 pb-4 sm:max-h-96 sm:px-6">
           <div className="space-y-2">
             {!selectedDate ? (

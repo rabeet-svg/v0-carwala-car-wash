@@ -21,11 +21,9 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Convert dates to proper ISO format with time for v2 API
     const startTime = new Date(dateFrom + 'T00:00:00.000Z').toISOString();
     const endTime = new Date(dateTo + 'T23:59:59.999Z').toISOString();
 
-    // Build v2 API URL with correct parameter names
     const apiUrl = new URL(`${process.env.CALCOM_API_URL}/slots`);
     apiUrl.searchParams.set('eventTypeId', eventTypeId);
     apiUrl.searchParams.set('start', startTime);
@@ -59,8 +57,6 @@ export async function GET(request: NextRequest) {
 
     const responseData = await response.json();
 
-    // v2 API returns { status: "success", data: {...} }
-    // Return the data directly as per Cal.com v2 API documentation
     if (responseData.status === 'success') {
       return NextResponse.json(responseData.data);
     } else {

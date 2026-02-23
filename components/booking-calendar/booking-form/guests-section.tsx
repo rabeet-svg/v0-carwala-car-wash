@@ -32,7 +32,6 @@ export const GuestsSection: React.FC<GuestsSectionProps> = ({
       return;
     }
 
-    // Check for case-insensitive duplicates
     const isDuplicate = guests.some(
       (existingEmail) =>
         existingEmail.toLowerCase() === trimmedEmail.toLowerCase()
@@ -69,7 +68,6 @@ export const GuestsSection: React.FC<GuestsSectionProps> = ({
         </Button>
       </div>
 
-      {/* Existing Guests */}
       {guests.length > 0 && (
         <div className="space-y-2">
           {guests.map((email, index) => (
@@ -91,7 +89,6 @@ export const GuestsSection: React.FC<GuestsSectionProps> = ({
         </div>
       )}
 
-      {/* Guest Input */}
       {showGuestInput && (
         <div className="space-y-2">
           <div className="flex gap-2">

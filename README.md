@@ -4,7 +4,7 @@
 
 A modern, professional car wash and detailing service booking platform built with Next.js 16, React 19, and tRPC.
 
-## 🚀 Features
+##  Features
 
 - **Service Showcase** - Display detailing packages (Silver, Gold, Platinum, Deep Detailing)
 - **Online Booking** - Real-time appointment scheduling with Cal.com integration

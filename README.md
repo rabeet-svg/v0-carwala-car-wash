@@ -14,7 +14,7 @@ A modern, professional car wash and detailing service booking platform built wit
 - **Dark Mode** - Full theme support via next-themes
 - **Performance Optimized** - Static generation, intersection observer for lazy loading
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - **Framework:** Next.js 16.0.10

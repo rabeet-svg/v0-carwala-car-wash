@@ -44,7 +44,7 @@ export function Header() {
                 <Menu className="w-[24px] h-[24px]" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-destructive/80 backdrop-blur-md">
               <SheetHeader>
                 <SheetTitle className="text-left font-heading text-xl">Menu</SheetTitle>
               </SheetHeader>

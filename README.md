@@ -37,7 +37,7 @@ A modern, professional car wash and detailing service booking platform built wit
 - **Build Tool:** Next.js compiler
 - **Deployment:** Vercel
 
-## 📦 Installation
+##  Installation
 
 ### Prerequisites
 - Node.js 18+ 

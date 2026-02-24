@@ -28,7 +28,7 @@ export function Header() {
           <Link href="/services" className="text-foreground text-[14px] font-accent font-normal tracking-[1.4px] uppercase hover:text-primary transition-colors">
             SERVICES
           </Link>
-          <Link href="#" className="text-foreground text-[14px] font-accent font-normal tracking-[1.4px] uppercase hover:text-primary transition-colors">
+          <Link href="/gallery" className="text-foreground text-[14px] font-accent font-normal tracking-[1.4px] uppercase hover:text-primary transition-colors">
             GALLERY
           </Link>
         </nav>
@@ -66,7 +66,7 @@ export function Header() {
                     <Link href="/services" className="flex h-[56px] items-center px-[32px] text-foreground text-[16px] font-accent font-normal tracking-[1.4px] uppercase hover:text-primary transition-colors">
                       SERVICES
                     </Link>
-                    <Link href="#" className="flex h-[56px] items-center px-[32px] text-foreground text-[16px] font-accent font-normal tracking-[1.4px] uppercase hover:text-primary transition-colors">
+                    <Link href="/gallery" className="flex h-[56px] items-center px-[32px] text-foreground text-[16px] font-accent font-normal tracking-[1.4px] uppercase hover:text-primary transition-colors">
                       GALLERY
                     </Link>
                     <Dialog>

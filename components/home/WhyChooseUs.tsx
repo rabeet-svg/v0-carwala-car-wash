@@ -3,7 +3,6 @@
 import { Wrench, Truck, UserCheck, Award } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
 
-const imgDivColumnImageBg = "/media/501-homepage-007.webp";
 const img501Homepage003Mp4 = "/media/501-homepage-003.mp4";
 
 const features = [
@@ -47,11 +46,8 @@ export function WhyChooseUs() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
           {/* Video Section */}
           <div className="lg:col-span-4 relative min-h-[400px] bg-black overflow-hidden group">
-            <div className={`absolute inset-0 z-0 ${cardsInView ? 'animate-why-choose-video' : ''}`}>
-              <img src={imgDivColumnImageBg} className="w-full h-full object-cover opacity-60" alt="" />
-            </div>
             <video
-              className={`absolute inset-0 w-full h-full object-cover z-10 opacity-80 ${cardsInView ? 'animate-why-choose-video' : ''}`}
+              className={`absolute inset-0 w-full h-full object-cover ${cardsInView ? 'animate-why-choose-video' : ''}`}
               autoPlay
               muted
               loop

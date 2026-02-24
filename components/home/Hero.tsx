@@ -8,16 +8,14 @@ const img501Homepage020Mp4 = "/media/501-homepage-020.mp4";
 export function Hero() {
   return (
     <div className="relative w-full h-screen min-h-[800px] flex items-end pb-25 overflow-hidden">
-      {/* Background Video/Image */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/80 z-10" />
-        <video 
+        <video
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay 
-          muted 
-          loop 
+          autoPlay
+          muted
+          loop
           playsInline
-          poster={imgDivRowBg}
         >
           <source src={img501Homepage020Mp4} type="video/mp4" />
         </video>

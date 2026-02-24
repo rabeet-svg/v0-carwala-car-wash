@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Calendar, Sparkles, Shield, Wand2, Gem, Sun } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
+import Link from "next/link"
 
 const imgDivBoxBg = "/media/501-homepage-007.webp";
 const imgDivBoxBg1 = "/media/501-homepage-008.webp";
@@ -42,7 +43,7 @@ export function Services() {
   const { ref: sectionRef, inView } = useInView({ threshold: 0.1 });
 
   return (
-    <section ref={sectionRef} className="pt-0 pb-24 bg-background">
+    <section ref={sectionRef} className="pt-8 pb-24 bg-background">
       <div className="container mx-auto px-4 mb-16">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
           <h2 className={`text-[40px] font-heading font-medium text-foreground ${inView ? 'animate-hero-fade-up' : 'opacity-0'}`}>Our Services</h2>
@@ -87,10 +88,12 @@ export function Services() {
         </div>
 
         <div className="flex justify-center mt-16">
-          <Button className={`bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-7.5 py-3.75 h-auto text-xs tracking-[1.3px] font-sans font-normal uppercase flex items-center gap-3 transition-colors ${inView ? 'animate-hero-fade-up delay-900' : 'opacity-0'}`}>
-            <span>Book Appointment</span>
-            <Calendar className="w-5 h-5" />
-          </Button>
+          <Link href="/calendar">
+            <Button className={`bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-7.5 py-3.75 h-auto text-xs tracking-[1.3px] font-sans font-normal uppercase flex items-center gap-3 transition-colors ${inView ? 'animate-hero-fade-up delay-900' : 'opacity-0'}`}>
+              <span>Book Appointment</span>
+              <Calendar className="w-5 h-5" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

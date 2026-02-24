@@ -8,12 +8,10 @@ const img501Homepage021Mp4 = "/media/501-homepage-021.mp4";
 export function CallToAction() {
   return (
     <section className="relative py-32 overflow-hidden">
-      {/* Background */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/30 z-10" />
-        <img src={imgDivRowBg} className="absolute inset-0 w-full h-full object-cover" alt="" />
         <video
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
+          className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           muted
           loop

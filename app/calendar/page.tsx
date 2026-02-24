@@ -52,28 +52,30 @@ export default async function CalendarPage({
   const initialServiceId = typeof resolvedSearchParams.service === 'string' ? resolvedSearchParams.service : undefined;
 
   return (
-    <main className="min-h-screen bg-background">
+    <>
       <Header />
-      <div className="container mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
-        <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex-1">
-            <h1 className="text-2xl font-bold sm:text-3xl">Book Your Car Detailing Appointment</h1>
-            <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-              Select your preferred package and time slot — we&apos;ll take care of the rest
-            </p>
+      <main className="min-h-screen bg-background pt-[80px]">
+        <div className="container mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
+          <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex-1">
+              <h1 className="text-2xl font-bold sm:text-3xl font-heading">Book Your Car Detailing Appointment</h1>
+              <p className="mt-1 text-sm text-muted-foreground sm:text-base font-body">
+                Select your preferred package and time slot — we&apos;ll take care of the rest
+              </p>
+            </div>
           </div>
-        </div>
 
-        <BookingWidget
-          key={initialServiceId}
-          services={SERVICES}
-          initialServiceId={initialServiceId}
-          title="Book Your Car Detailing Appointment"
-          description="Choose your package and pick a convenient time for your vehicle"
-          showHeader
-        />
-      </div>
+          <BookingWidget
+            key={initialServiceId}
+            services={SERVICES}
+            initialServiceId={initialServiceId}
+            title="Book Your Car Detailing Appointment"
+            description="Choose your package and pick a convenient time for your vehicle"
+            showHeader
+          />
+        </div>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

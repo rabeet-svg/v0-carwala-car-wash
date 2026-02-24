@@ -33,13 +33,13 @@ export function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border transition-colors duration-200">
         {/* Main Navigation Bar */}
-        <div className="h-[70px] md:h-[80px] flex items-center justify-between px-[20px] md:px-[30px] relative z-50 bg-white">
+        <div className="h-[60px] md:h-[60px] flex items-center justify-between px-[20px] md:px-[30px] relative z-50 bg-white">
           {/* Desktop Navigation - Left */}
           <nav className="hidden md:flex items-center gap-[25px]">
-            <Link href="/services" className="text-foreground text-[14px] font-accent font-normal tracking-[1.4px] uppercase hover:text-primary transition-colors">
+            <Link href="/services" className="text-foreground text-[15px] font-accent font-medium tracking-wide uppercase hover:text-primary transition-colors">
               SERVICES
             </Link>
-            <Link href="/gallery" className="text-foreground text-[14px] font-accent font-normal tracking-[1.4px] uppercase hover:text-primary transition-colors">
+            <Link href="/gallery" className="text-foreground text-[15px] font-accent font-medium tracking-wide uppercase hover:text-primary transition-colors">
               GALLERY
             </Link>
           </nav>
@@ -65,25 +65,50 @@ export function Header() {
           <div className="flex md:hidden items-center justify-end flex-1">
             <Link 
               href="/calendar"
-              className="text-foreground text-[12px] font-accent font-normal tracking-[1.4px] uppercase hover:opacity-60 transition-opacity text-right"
+              className="text-foreground text-[12px] font-accent font-normal tracking-[1.4px] uppercase hover:opacity-60 transition-opacity text-right flex items-center justify-end gap-2"
             >
-              BOOK NOW
+              <span>BOOK NOW</span>
+              <div className="relative w-[12px] h-[12px]">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute top-1/2 left-1/2 flex h-[1.5px] w-full -translate-x-1/2 -translate-y-1/2 gap-[30%]">
+                    <div className="flex-1 bg-current"></div>
+                    <div className="flex-1 bg-current"></div>
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 flex h-full w-[1.5px] -translate-x-1/2 -translate-y-1/2 flex-col gap-[30%] transition-transform duration-200 ease-in-out">
+                    <div className="flex-1 bg-current"></div>
+                    <div className="flex-1 bg-current"></div>
+                  </div>
+                </div>
+              </div>
             </Link>
           </div>
 
           {/* Desktop Actions - Right */}
-          <div className="hidden md:flex items-center gap-[15px]">
-            <Link href="/calendar">
-              <Button className="text-[12px] font-accent tracking-[1.4px] font-normal uppercase px-[20px] h-[40px] rounded-sm border border-border">
-                BOOK NOW
-              </Button>
+          <div className="hidden md:flex items-center gap-[25px]">
+            <Link 
+              href="/calendar"
+              className="text-foreground text-[15px] font-accent font-medium tracking-[1.4px] uppercase hover:text-primary transition-colors flex items-center gap-2"
+            >
+              <span>BOOK NOW</span>
+              <div className="relative w-[12px] h-[12px]">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute top-1/2 left-1/2 flex h-[1.5px] w-full -translate-x-1/2 -translate-y-1/2 gap-[30%]">
+                    <div className="flex-1 bg-current"></div>
+                    <div className="flex-1 bg-current"></div>
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 flex h-full w-[1.5px] -translate-x-1/2 -translate-y-1/2 flex-col gap-[30%] transition-transform duration-200 ease-in-out">
+                    <div className="flex-1 bg-current"></div>
+                    <div className="flex-1 bg-current"></div>
+                  </div>
+                </div>
+              </div>
             </Link>
 
             <Dialog>
               <DialogTrigger asChild>
-                <Button className="bg-white hover:bg-white/90 text-foreground text-[12px] font-accent tracking-[1.4px] font-normal uppercase px-[20px] h-[40px] rounded-sm border border-border">
+                <button className="text-foreground text-[15px] font-accent font-medium tracking-[1.4px] uppercase hover:text-primary transition-colors">
                   LET'S TALK
-                </Button>
+                </button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-3xl max-h-[85vh] overflow-y-auto p-4 sm:p-6">
                 <DialogHeader>
@@ -105,12 +130,12 @@ export function Header() {
       {isMobileMenuOpen && (
         <>
           <div 
-            className="fixed inset-0 top-[70px] z-30 bg-black/20 md:hidden"
+            className="fixed inset-0 top-[60px] z-30 bg-black/20 md:hidden"
             onClick={() => setIsMobileMenuOpen(false)}
           />
 
           <div 
-            className="fixed top-[70px] left-0 right-0 z-40 bg-background border-b border-border shadow-lg md:hidden flex flex-col max-h-[calc(100vh-70px)] overflow-y-auto animate-in slide-in-from-top-2 duration-200"
+            className="fixed top-[60px] left-0 right-0 z-40 bg-background border-b border-border shadow-lg md:hidden flex flex-col max-h-[calc(100vh-60px)] overflow-y-auto animate-in slide-in-from-top-2 duration-200"
           >
             <nav className="flex flex-col">
               <Link 

@@ -1,7 +1,7 @@
 import { Header } from "@/components/home/Header"
 import { Hero } from "@/components/home/Hero"
 import { WhyChooseUs } from "@/components/home/WhyChooseUs"
-import { Stats } from "@/components/home/Stats"
+// import { Stats } from "@/components/home/Stats"
 import { Services } from "@/components/home/Services"
 import { CallToAction } from "@/components/home/CallToAction"
 import { Footer } from "@/components/home/Footer"
@@ -22,7 +22,7 @@ export default function Home() {
       <Header />
       <Hero />
       <WhyChooseUs />
-      <Stats />
+      {/* <Stats /> */}
       <Services />
       <CallToAction />
       <Footer />

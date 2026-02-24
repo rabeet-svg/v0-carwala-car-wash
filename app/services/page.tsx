@@ -45,24 +45,39 @@ export default function ServicesPage() {
             {services.map((service, i) => (
               <div
                 key={i}
-                className="group relative aspect-square overflow-hidden rounded-lg bg-muted"
+                className="group flex flex-col"
               >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <div className="w-full">
-                    <h3 className="text-white font-heading font-medium text-lg mb-4">
-                      {service.title}
-                    </h3>
-                    <Link href={`/calendar?service=${service.id}`}>
-                      <Button className="w-full bg-white text-black hover:bg-white/90 rounded-none px-6 py-5 text-xs tracking-widest uppercase font-medium">
-                        Book This Service
-                      </Button>
-                    </Link>
+                {/* Image with overlay on desktop */}
+                <div className="relative aspect-square md:overflow-hidden rounded-lg bg-muted">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 md:group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <div className="w-full">
+                      <h3 className="text-white font-heading font-medium text-lg mb-4">
+                        {service.title}
+                      </h3>
+                      <Link href={`/calendar?service=${service.id}`}>
+                        <Button className="w-full bg-white text-black hover:bg-white/90 rounded-none px-6 py-5 text-xs tracking-widest uppercase font-medium">
+                          Book This Service
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
+                </div>
+
+                {/* Title and button below on mobile */}
+                <div className="md:hidden mt-4 space-y-3">
+                  <h3 className="text-foreground font-heading font-medium text-lg">
+                    {service.title}
+                  </h3>
+                  <Link href={`/calendar?service=${service.id}`}>
+                    <Button className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-none px-6 py-5 text-xs tracking-widest uppercase font-medium">
+                      Book This Service
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ))}

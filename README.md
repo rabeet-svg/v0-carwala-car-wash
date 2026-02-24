@@ -79,7 +79,7 @@ GMAIL_APP_PASSWORD=your_app_password
 GMAIL_RECIPIENTS=notification_recipients
 ```
 
-## 🚀 Development
+##  Development
 
 ```bash
 # Start development server

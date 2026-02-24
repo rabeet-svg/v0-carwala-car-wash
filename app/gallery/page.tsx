@@ -28,10 +28,10 @@ export default function GalleryPage() {
       <main className="min-h-screen bg-background pt-[80px]">
         <div className="container mx-auto px-4 py-12">
           <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-heading font-medium text-foreground mb-4">
+            <h1 className="text-2xl font-bold sm:text-3xl font-heading mb-4">
               Our Gallery
             </h1>
-            <p className="text-lg font-body text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm text-muted-foreground sm:text-base font-body">
               Explore our portfolio of professional car detailing transformations
             </p>
           </div>

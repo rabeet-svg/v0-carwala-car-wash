@@ -20,7 +20,7 @@ import { ContactForm } from "@/components/contact/ContactForm"
 
 export function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-footer-bg border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border">
       {/* Main Navigation Bar */}
       <div className="h-[70px] md:h-[80px] flex items-center justify-between px-[20px] md:px-[30px]">
         {/* Desktop Navigation - Left */}

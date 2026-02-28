@@ -15,6 +15,7 @@ type PricingPlan = {
   plan_descp: string;
   plan_price: number;
   plan_feature: string[];
+  serviceId: string;
 };
 
 const pricingData: PricingPlan[] = [
@@ -23,18 +24,15 @@ const pricingData: PricingPlan[] = [
     plan_name: "Silver Detailing Package",
     plan_descp: "Professional car detailing for everyday needs",
     plan_price: 6500,
+    serviceId: "silver",
     plan_feature: [
       "p-H Neutral Foam Wash",
-      "Safe Hand Wash Technique (With Microfiber Cloth)",
-      "All Tyres Cleaning",
-      "Tyres Dressing & Shining",
-      "Door Handles & Fuel Cap Cleaning",
-      "Engine Bay Basic Cleaning (With Premium Products)",
+      "Safe Hand Wash Technique",
+      "Tyres Cleaning & Dressing",
+      "Engine Bay Basic Cleaning",
       "Streak-Free Glass Cleaning",
-      "Interior Cleaning (Without Seats Removal)",
-      "Complete Floor & Seat Surface Vacuum",
-      "Dashboard & Centre Console Cleaning",
-      "Interior Plastics Polishing",
+      "Interior Vacuum & Cleaning",
+      "Dashboard & Console Cleaning",
     ],
   },
   {
@@ -42,6 +40,7 @@ const pricingData: PricingPlan[] = [
     plan_name: "Gold Detailing Package",
     plan_descp: "Enhanced detailing with wax protection and deeper cleaning",
     plan_price: 10000,
+    serviceId: "gold",
     plan_feature: [
       "All Things Of Basic Package",
       "Double-Stage Wax Protection",
@@ -56,15 +55,15 @@ const pricingData: PricingPlan[] = [
     plan_name: "Platinum Detailing Package",
     plan_descp: "Premium detailing with paint correction and complete interior restoration",
     plan_price: 14000,
+    serviceId: "platinum",
     plan_feature: [
-      "All Things Of Basic & Gold Package",
+      "All Silver & Gold Package Features",
       "Full Body Polishing & Compounding",
-      "Advanced Paint Finishing On Body",
-      "All Things Of Basic & Gold Package",
-      "Interior Cleaning (With All Seats Removal)",
-      "Seats Shampooing & detailing",
-      "Mats & Carpets (Deep Wash)",
-      "Complete Interior Restoration (With Premium Products)",
+      "Advanced Paint Finishing",
+      "Interior Deep Cleaning",
+      "Seats Shampooing & Detailing",
+      "Mats & Carpets Deep Wash",
+      "Complete Interior Restoration",
     ],
   },
   {
@@ -72,6 +71,7 @@ const pricingData: PricingPlan[] = [
     plan_name: "Deep Detailing Package",
     plan_descp: "Specialized cleaning for freshly imported cars from Japan",
     plan_price: 20000,
+    serviceId: "detailed",
     plan_feature: [
       "All Things of Basic, Gold & Platinum Package",
       "Complete Deep Cleaning of Everything",
@@ -150,7 +150,7 @@ const Pricing = () => {
                         <p className="text-4xl sm:text-5xl font-semibold text-card-foreground flex items-end">
                           PKR {items.plan_price.toLocaleString()}
                         </p>
-                        <Link href={`/calendar?service=${items.plan_name.toLowerCase().replace(' ', '-').replace('detailing-package', '')}`}>
+                        <Link href={`/calendar?service=${items.serviceId}`}>
                           <Button className="relative bg-white hover:bg-white hover:text-black dark:hover:text-black text-black text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden">
                             <span className="relative z-10 transition-all duration-500">
                               Book This Service

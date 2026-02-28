@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 
@@ -113,7 +113,7 @@ const Pricing = () => {
             {/* Heading */}
             <div className="max-w-3xs sm:max-w-md mx-auto text-center">
               <h2 className="text-foreground text-3xl sm:text-5xl font-medium">
-                Pick the plan that fits your start-up
+                Pick the plan that fits your car
               </h2>
             </div>
           </div>
@@ -139,7 +139,7 @@ const Pricing = () => {
                   <CardContent className="flex flex-col sm:flex-row gap-6 md:gap-10 items-start self-stretch px-0 h-full w-full">
                     <div className="flex flex-col items-start justify-between self-stretch gap-6">
                       <div className="flex flex-col gap-3">
-                        <Badge className="py-1 px-3 text-sm font-normal leading-5 w-fit h-7">
+                        <Badge className="py-1 px-3 text-sm font-normal leading-5 h-auto whitespace-normal">
                           {items.plan_name}
                         </Badge>
                         <p className="text-sm font-normal text-muted-foreground max-w-56">
@@ -148,10 +148,7 @@ const Pricing = () => {
                       </div>
                       <div className="flex flex-col gap-4">
                         <p className="text-4xl sm:text-5xl font-semibold text-card-foreground flex items-end">
-                          ${items.plan_price}
-                          <span className="text-base font-normal text-muted-foreground">
-                            /month
-                          </span>
+                          PKR {items.plan_price.toLocaleString()}
                         </p>
                         <Link href={`/calendar?service=${items.plan_name.toLowerCase().replace(' ', '-').replace('detailing-package', '')}`}>
                           <Button className="relative bg-white hover:bg-white hover:text-black dark:hover:text-black text-black text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden">
@@ -185,7 +182,7 @@ const Pricing = () => {
                                 key={index}
                                 className="flex items-center gap-3 text-card-foreground text-base font-normal tracking-normal"
                               >
-                                <Check size={16} aria-hidden="true" />
+                                <BadgeCheck size={16} aria-hidden="true" />
                                 {feature}
                               </li>
                             );

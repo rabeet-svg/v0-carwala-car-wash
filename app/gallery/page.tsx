@@ -5,21 +5,21 @@ import { Compare } from "@/components/ui/compare"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Gallery",
-  description: "Explore our portfolio of professional car detailing work in Karachi.",
+  title: "Car Detailing Gallery",
+  description: "View our expert car detailing transformations in Karachi - paint correction, ceramic coating, PPF & more.",
   image: "/premium-car-detailing-polishing-and-protection.jpg",
   url: "/gallery",
 })
 
 const galleryImages = [
-  { src: "/media/501-homepage-007.webp", alt: "Premium Interior & Exterior Detailing" },
-  { src: "/media/501-homepage-008.webp", alt: "Paint Protection Film (PPF)" },
-  { src: "/media/501-homepage-009.webp", alt: "Paint Correction & Polishing" },
-  { src: "/media/501-homepage-010.webp", alt: "Ceramic Coating" },
-  { src: "/media/501-homepage-011.webp", alt: "Window Tinting" },
-  { src: "/media/501-homepage-003.mp4", alt: "Car detailing process", isVideo: true },
-  { src: "/media/501-homepage-020.mp4", alt: "Car transformation video", isVideo: true },
-  { src: "/media/501-homepage-021.mp4", alt: "Car detailing showcase", isVideo: true },
+  { src: "/media/501-homepage-007.webp", alt: "Premium Interior and Exterior Detailing" },
+  { src: "/media/501-homepage-008.webp", alt: "Paint Protection Film Application" },
+  { src: "/media/501-homepage-009.webp", alt: "Paint Correction and Polishing" },
+  { src: "/media/501-homepage-010.webp", alt: "Ceramic Coating Service" },
+  { src: "/media/501-homepage-011.webp", alt: "Professional Window Tinting" },
+  { src: "/media/501-homepage-003.mp4", alt: "Professional car detailing process", isVideo: true },
+  { src: "/media/501-homepage-020.mp4", alt: "Complete car transformation", isVideo: true },
+  { src: "/media/501-homepage-021.mp4", alt: "Auto detailing showcase", isVideo: true },
 ]
 
 // Before/After comparison images (update with your actual before/after pairs)
@@ -27,12 +27,12 @@ const comparisonImages = [
   {
     before: "/media/501-homepage-007.webp",
     after: "/media/501-homepage-008.webp",
-    title: "Paint Correction Transformation",
+    title: "Paint Correction & Polishing",
   },
   {
     before: "/media/501-homepage-009.webp",
     after: "/media/501-homepage-010.webp",
-    title: "Ceramic Coating Before & After",
+    title: "Ceramic Coating Protection",
   },
 ]
 
@@ -44,17 +44,17 @@ export default function GalleryPage() {
         <div className="container mx-auto px-4 py-12">
           <div className="mb-12 text-center">
             <h1 className="text-2xl font-bold sm:text-3xl font-heading mb-4">
-              Our Gallery
+              Car Detailing Gallery
             </h1>
             <p className="text-sm text-muted-foreground sm:text-base font-body">
-              Explore our portfolio of professional car detailing transformations
+              Browse our portfolio of premium car care transformations
             </p>
           </div>
 
           {/* Before/After Comparisons Section */}
           <section className="mb-16">
             <h2 className="text-xl font-bold font-heading mb-6 text-center">
-              Before & After Comparisons
+              Real Transformations
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {comparisonImages.map((comparison, i) => (
@@ -80,7 +80,7 @@ export default function GalleryPage() {
           {/* Gallery Grid Section */}
           <section>
             <h2 className="text-xl font-bold font-heading mb-6 text-center">
-              Photo Gallery
+              Detailing Portfolio
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {galleryImages.map((item, i) => (

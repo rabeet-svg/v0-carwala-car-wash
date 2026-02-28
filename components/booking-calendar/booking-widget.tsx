@@ -286,20 +286,20 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({
       )}
 
       {currentStep === 'cancelled' && (
-        <div className="bg-neutral-900 rounded-2xl border border-neutral-700 shadow-xl">
+        <div className="bg-card rounded-2xl border border-border shadow-xl">
           <div className="p-6 text-center">
             <div className="mb-6 flex justify-center">
               <div className="rounded-full bg-red-500/10 p-4">
                 <X className="h-12 w-12 text-red-400" />
               </div>
             </div>
-            <h2 className="mb-2 text-2xl font-bold text-neutral-100">
+            <h2 className="mb-2 text-2xl font-bold text-foreground">
               Appointment Cancelled
             </h2>
-            <p className="mb-6 text-neutral-400">
+            <p className="mb-6 text-muted-foreground">
               Your appointment has been successfully cancelled.
             </p>
-            <p className="mb-6 text-sm text-neutral-500">
+            <p className="mb-6 text-sm text-muted-foreground">
               Returning to calendar in {cancelCountdown} seconds...
             </p>
             <Button onClick={handleNewBooking} className="w-full max-w-sm">

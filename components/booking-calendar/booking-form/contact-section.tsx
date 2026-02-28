@@ -16,7 +16,7 @@ interface ContactSectionProps<T extends FieldValues> {
 export const ContactSection = <T extends FieldValues>({ control }: ContactSectionProps<T>) => {
   return (
     <div className="space-y-4">
-      <Label className="font-medium text-neutral-200 uppercase">
+      <Label className="font-medium text-foreground uppercase">
         Your Details
       </Label>
 
@@ -32,7 +32,7 @@ export const ContactSection = <T extends FieldValues>({ control }: ContactSectio
                   type="text"
                   placeholder="Your full name"
                   {...field}
-                  className="h-12 bg-neutral-800 text-neutral-200 border-neutral-600 focus-visible:border-blue-500 focus-visible:ring-blue-500/50"
+                  className="h-12 bg-muted text-foreground border-border focus-visible:border-blue-500 focus-visible:ring-blue-500/50"
                 />
               </FormControl>
               <FormMessage />
@@ -51,7 +51,7 @@ export const ContactSection = <T extends FieldValues>({ control }: ContactSectio
                   type="email"
                   placeholder="your@email.com"
                   {...field}
-                  className="h-12 bg-neutral-800 text-neutral-200 border-neutral-600 focus-visible:border-blue-500 focus-visible:ring-blue-500/50"
+                  className="h-12 bg-muted text-foreground border-border focus-visible:border-blue-500 focus-visible:ring-blue-500/50"
                 />
               </FormControl>
               <FormMessage />
@@ -71,7 +71,7 @@ export const ContactSection = <T extends FieldValues>({ control }: ContactSectio
                 placeholder="Tell us about your vehicle (make, model, year) and any specific concerns..."
                 {...field}
                 rows={5}
-                className="h-36 resize-none bg-neutral-800 text-neutral-200 border-neutral-600 focus-visible:border-blue-500 focus-visible:ring-blue-500/50"
+                className="h-36 resize-none bg-muted text-foreground border-border focus-visible:border-blue-500 focus-visible:ring-blue-500/50"
               />
             </FormControl>
             <FormMessage />

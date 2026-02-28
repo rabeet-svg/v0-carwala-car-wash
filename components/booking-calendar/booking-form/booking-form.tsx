@@ -106,7 +106,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   };
 
   return (
-    <div className="bg-neutral-900 overflow-hidden rounded-2xl border border-neutral-800 shadow p-4 sm:p-6">
+    <div className="bg-card overflow-hidden rounded-2xl border border-border shadow p-4 sm:p-6">
       <div className="mb-6 sm:mb-8">
         <AppointmentDetails
           selectedSlot={selectedSlot}
@@ -148,11 +148,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             </Button>
           </div>
 
-          <p className="text-center text-sm text-neutral-400">
+          <p className="text-center text-sm text-muted-foreground">
             By sending, you agree to our{" "}
             <Link
               href="/privacy-policy"
-              className="font-medium text-neutral-200 underline hover:text-blue-400 transition-colors">
+              className="font-medium text-foreground underline hover:text-blue-400 transition-colors">
               Privacy policy
             </Link>{" "}
             and the processing of your data for your car detailing appointment.

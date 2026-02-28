@@ -53,7 +53,7 @@ export const GuestsSection: React.FC<GuestsSectionProps> = ({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <Label className="font-medium text-neutral-200">
+        <Label className="font-medium text-foreground">
           Add guests (optional)
         </Label>
         <Button
@@ -71,9 +71,9 @@ export const GuestsSection: React.FC<GuestsSectionProps> = ({
       {guests.length > 0 && (
         <div className="space-y-2">
           {guests.map((email, index) => (
-            <div key={index} className="border-neutral-600 bg-neutral-800">
+            <div key={index} className="border-border bg-muted">
               <div className="flex items-center justify-between p-3">
-                <span className="text-sm text-neutral-300">{email}</span>
+                <span className="text-sm text-foreground">{email}</span>
                 <Button
                   type="button"
                   variant="ghost"

@@ -1,4 +1,4 @@
-import Pricing from "@/components/shadcn-space/blocks/pricing-01/pricing";
+import { Pricing } from "@/components/Pricing";
 
 const Pricing01Page = () => {
   return <Pricing />;

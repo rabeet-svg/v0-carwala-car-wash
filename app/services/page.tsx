@@ -1,6 +1,6 @@
 import { Header } from "@/components/home/Header"
 import { Footer } from "@/components/home/Footer"
-import Pricing from "@/components/shadcn-space/blocks/pricing-01/pricing"
+import { Pricing } from "@/components/Pricing"
 
 export default function ServicesPage() {
   return (

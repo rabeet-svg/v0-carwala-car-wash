@@ -80,7 +80,7 @@ const pricingData: PricingPlan[] = [
   },
 ];
 
-const Pricing = () => {
+export function Pricing() {
   const cardVariants = {
     hidden: {
       opacity: 0,
@@ -199,6 +199,4 @@ const Pricing = () => {
       </div>
     </section>
   );
-};
-
-export default Pricing;
+}
